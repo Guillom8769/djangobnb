@@ -1,6 +1,7 @@
 # bnb/views.py
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import User, Place, Review, Amenity, Country, City
+from .forms import UserForm, PlaceForm, ReviewForm, AmenityForm, CountryForm, CityForm
 
 def home(request):
     return render(request, 'bnb/home.html')
@@ -52,3 +53,177 @@ def city_list(request):
 def city_detail(request, pk):
     city = get_object_or_404(City, pk=pk)
     return render(request, 'bnb/city_detail.html', {'city': city})
+
+# Form views for User
+def user_create(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('user_list')
+    else:
+        form = UserForm()
+    return render(request, 'bnb/user_form.html', {'form': form})
+
+def user_update(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.method == "POST":
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_detail', pk=user.pk)
+    else:
+        form = UserForm(instance=user)
+    return render(request, 'bnb/user_form.html', {'form': form})
+
+def user_delete(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.method == "POST":
+        user.delete()
+        return redirect('user_list')
+    return render(request, 'bnb/user_confirm_delete.html', {'user': user})
+
+# Form views for Place
+def place_create(request):
+    if request.method == "POST":
+        form = PlaceForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('place_list')
+    else:
+        form = PlaceForm()
+    return render(request, 'bnb/place_form.html', {'form': form})
+
+def place_update(request, pk):
+    place = get_object_or_404(Place, pk=pk)
+    if request.method == "POST":
+        form = PlaceForm(request.POST, instance=place)
+        if form.is_valid():
+            form.save()
+            return redirect('place_detail', pk=place.pk)
+    else:
+        form = PlaceForm(instance=place)
+    return render(request, 'bnb/place_form.html', {'form': form})
+
+def place_delete(request, pk):
+    place = get_object_or_404(Place, pk=pk)
+    if request.method == "POST":
+        place.delete()
+        return redirect('place_list')
+    return render(request, 'bnb/place_confirm_delete.html', {'place': place})
+
+# Form views for Review
+def review_create(request):
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('review_list')
+    else:
+        form = ReviewForm()
+    return render(request, 'bnb/review_form.html', {'form': form})
+
+def review_update(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    if request.method == "POST":
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('review_detail', pk=review.pk)
+    else:
+        form = ReviewForm(instance=review)
+    return render(request, 'bnb/review_form.html', {'form': form})
+
+def review_delete(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    if request.method == "POST":
+        review.delete()
+        return redirect('review_list')
+    return render(request, 'bnb/review_confirm_delete.html', {'review': review})
+
+# Form views for Amenity
+def amenity_create(request):
+    if request.method == "POST":
+        form = AmenityForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('amenity_list')
+    else:
+        form = AmenityForm()
+    return render(request, 'bnb/amenity_form.html', {'form': form})
+
+def amenity_update(request, pk):
+    amenity = get_object_or_404(Amenity, pk=pk)
+    if request.method == "POST":
+        form = AmenityForm(request.POST, instance=amenity)
+        if form.is_valid():
+            form.save()
+            return redirect('amenity_detail', pk=amenity.pk)
+    else:
+        form = AmenityForm(instance=amenity)
+    return render(request, 'bnb/amenity_form.html', {'form': form})
+
+def amenity_delete(request, pk):
+    amenity = get_object_or_404(Amenity, pk=pk)
+    if request.method == "POST":
+        amenity.delete()
+        return redirect('amenity_list')
+    return render(request, 'bnb/amenity_confirm_delete.html', {'amenity': amenity})
+
+# Form views for Country
+def country_create(request):
+    if request.method == "POST":
+        form = CountryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('country_list')
+    else:
+        form = CountryForm()
+    return render(request, 'bnb/country_form.html', {'form': form})
+
+def country_update(request, pk):
+    country = get_object_or_404(Country, pk=pk)
+    if request.method == "POST":
+        form = CountryForm(request.POST, instance=country)
+        if form.is_valid():
+            form.save()
+            return redirect('country_detail', pk=country.pk)
+    else:
+        form = CountryForm(instance=country)
+    return render(request, 'bnb/country_form.html', {'form': form})
+
+def country_delete(request, pk):
+    country = get_object_or_404(Country, pk=pk)
+    if request.method == "POST":
+        country.delete()
+        return redirect('country_list')
+    return render(request, 'bnb/country_confirm_delete.html', {'country': country})
+
+# Form views for City
+def city_create(request):
+    if request.method == "POST":
+        form = CityForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('city_list')
+    else:
+        form = CityForm()
+    return render(request, 'bnb/city_form.html', {'form': form})
+
+def city_update(request, pk):
+    city = get_object_or_404(City, pk=pk)
+    if request.method == "POST":
+        form = CityForm(request.POST, instance=city)
+        if form.is_valid():
+            form.save()
+            return redirect('city_detail', pk=city.pk)
+    else:
+        form = CityForm(instance=city)
+    return render(request, 'bnb/city_form.html', {'form': form})
+
+def city_delete(request, pk):
+    city = get_object_or_404(City, pk=pk)
+    if request.method == "POST":
+        city.delete()
+        return redirect('city_list')
+    return render(request, 'bnb/city_confirm_delete.html', {'city': city})

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if form.instance.pk %}Modifier Lieu{% else %}Nouveau Lieu{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Modifier Lieu{% else %}Nouveau Lieu{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if form.instance.pk %}Modifier{% else %}Créer{% endif %}</button>
+    </form>
+    <a href="{% url 'place_list' %}">Retour à la liste des lieux</a>
+</body>
+</html>

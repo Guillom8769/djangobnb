@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if form.instance.pk %}Modifier Utilisateur{% else %}Nouveau Utilisateur{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Modifier Utilisateur{% else %}Nouveau Utilisateur{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+Nous allons créer des templates pour chaque entité et mettre à jour les URLs correspondantes. Voici les étapes détaillées :
+
+### 1. Mise à jour des templates
+
+**user_form.html**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if form.instance.pk %}Modifier Utilisateur{% else %}Nouveau Utilisateur{% endif %}</title>
+</head>
+<body>
+    <h1>{% if form.instance.pk %}Modifier Utilisateur{% else %}Nouveau Utilisateur{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if form.instance.pk %}Modifier{% else %}Créer{% endif %}</button>
+    </form>
+    <a href="{% url 'user_list' %}">Retour à la liste des utilisateurs</a>
+</body>
+</html>

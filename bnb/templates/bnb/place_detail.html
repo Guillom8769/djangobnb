@@ -1,0 +1,26 @@
+<!-- bnb/templates/bnb/place_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ place.name }}</title>
+</head>
+<body>
+    <h1>{{ place.name }}</h1>
+    <p>{{ place.description }}</p>
+    <p>{{ place.address }}</p>
+    <p>Ville: {{ place.city.name }}</p>
+    <p>Latitude: {{ place.latitude }}</p>
+    <p>Longitude: {{ place.longitude }}</p>
+    <p>Prix par nuit: {{ place.price_per_night }}</p>
+    <p>Nombre de chambres: {{ place.number_of_rooms }}</p>
+    <p>Nombre de salles de bain: {{ place.number_of_bathrooms }}</p>
+    <p>Nombre de personnes max: {{ place.max_guests }}</p>
+    <h2>Amenities:</h2>
+    <ul>
+        {% for amenity in place.amenities.all %}
+            <li>{{ amenity.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'place_list' %}">Retour à la liste des lieux</a>
+</body>
+</html>

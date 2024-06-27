@@ -1,0 +1,16 @@
+<!-- bnb/templates/bnb/place_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HBnB - Lieux</title>
+</head>
+<body>
+    <h1>Liste des lieux</h1>
+    <ul>
+        {% for place in places %}
+            <li><a href="{% url 'place_detail' place.pk %}">{{ place.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+</body>
+</html>

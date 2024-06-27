@@ -1,0 +1,83 @@
+# .gitignore for Django Project
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info
+dist/
+build/
+*.pyo
+
+# Django stuff:
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+db.sqlite3
+media
+
+# ENV files
+.env
+
+# PIP
+pip-log.txt
+pip-delete-this.txt
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+*.py[cod].cover
+.cache
+*.aplo
+.dockerignore
+
+# Environments
+.env
+.venv
+env/
+venv/
+env.bak/
+venv.bak/
+
+# Docker files
+*.log
+*.run
+docker-compose.yaml
+docker-compose.override.yaml
+Dockerfile
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Static and media files
+static/
+media/
+
+# Docs
+docs/_build/
+
+# Flask caches (optional)
+.flaskenv
+instance/
+.cache
+*.log
+
+# Flask static build folder
+flask-site/
+
+# My personal configuration files
+.*.swp
+.*.swo
+.*.swn

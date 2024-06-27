@@ -23,7 +23,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bnb',
 ]
+
+AUTH_USER_MODEL = 'bnb.User'  # Ajouter cette ligne pour utiliser le modèle utilisateur personnalisé
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

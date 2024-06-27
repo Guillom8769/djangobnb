@@ -1,0 +1,14 @@
+<!-- bnb/templates/bnb/user_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ user.username }}</title>
+</head>
+<body>
+    <h1>{{ user.username }}</h1>
+    <p>Email: {{ user.email }}</p>
+    <p>Prénom: {{ user.first_name }}</p>
+    <p>Nom: {{ user.last_name }}</p>
+    <a href="{% url 'user_list' %}">Retour à la liste des utilisateurs</a>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!-- bnb/templates/bnb/amenity_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HBnB - Commodités</title>
+</head>
+<body>
+    <h1>Liste des commodités</h1>
+    <ul>
+        {% for amenity in amenities %}
+            <li><a href="{% url 'amenity_detail' amenity.pk %}">{{ amenity.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+</body>
+</html>

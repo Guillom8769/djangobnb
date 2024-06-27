@@ -1,0 +1,16 @@
+<!-- bnb/templates/bnb/city_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HBnB - Villes</title>
+</head>
+<body>
+    <h1>Liste des villes</h1>
+    <ul>
+        {% for city in cities %}
+            <li><a href="{% url 'city_detail' city.pk %}">{{ city.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+</body>
+</html>

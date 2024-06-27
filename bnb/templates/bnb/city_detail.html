@@ -1,0 +1,12 @@
+<!-- bnb/templates/bnb/city_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ city.name }}</title>
+</head>
+<body>
+    <h1>{{ city.name }}</h1>
+    <p>Pays: {{ city.country.name }}</p>
+    <a href="{% url 'city_list' %}">Retour à la liste des villes</a>
+</body>
+</html>

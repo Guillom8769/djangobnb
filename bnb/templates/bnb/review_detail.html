@@ -1,0 +1,13 @@
+<!-- bnb/templates/bnb/review_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Avis de {{ review.user.username }} sur {{ review.place.name }}</title>
+</head>
+<body>
+    <h1>Avis de {{ review.user.username }} sur {{ review.place.name }}</h1>
+    <p>Note: {{ review.rating }}</p>
+    <p>Commentaire: {{ review.comment }}</p>
+    <a href="{% url 'review_list' %}">Retour à la liste des avis</a>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<!-- bnb/templates/bnb/country_detail.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ country.name }}</title>
+</head>
+<body>
+    <h1>{{ country.name }}</h1>
+    <p>Code: {{ country.code }}</p>
+    <a href="{% url 'country_list' %}">Retour à la liste des pays</a>
+</body>
+</html>

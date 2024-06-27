@@ -1,0 +1,16 @@
+<!-- bnb/templates/bnb/user_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HBnB - Utilisateurs</title>
+</head>
+<body>
+    <h1>Liste des utilisateurs</h1>
+    <ul>
+        {% for user in users %}
+            <li><a href="{% url 'user_detail' user.pk %}">{{ user.username }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+</body>
+</html>

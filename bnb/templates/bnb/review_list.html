@@ -1,0 +1,16 @@
+<!-- bnb/templates/bnb/review_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HBnB - Avis</title>
+</head>
+<body>
+    <h1>Liste des avis</h1>
+    <ul>
+        {% for review in reviews %}
+            <li><a href="{% url 'review_detail' review.pk %}">{{ review.comment }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Retour à l'accueil</a>
+</body>
+</html>

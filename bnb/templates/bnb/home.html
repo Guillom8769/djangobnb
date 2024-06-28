@@ -2,10 +2,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HBnB</title>
+    <title>Accueil</title>
 </head>
 <body>
     <h1>Bienvenue sur HBnB</h1>
-    <a href="{% url 'place_list' %}">Voir les lieux</a>
+    <nav>
+        <ul>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
 </body>
 </html>

@@ -1,12 +1,25 @@
-<!-- bnb/templates/bnb/city_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ city.name }}</title>
+    <title>Détail de la ville</title>
 </head>
 <body>
-    <h1>{{ city.name }}</h1>
+    <h1>Détail de la ville</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
+    <p>Nom: {{ city.name }}</p>
     <p>Pays: {{ city.country.name }}</p>
-    <a href="{% url 'city_list' %}">Retour à la liste des villes</a>
+    <a href="{% url 'city_update' city.pk %}">Modifier</a> | 
+    <a href="{% url 'city_delete' city.pk %}">Supprimer</a> | 
+    <a href="{% url 'city_list' %}">Retour à la liste</a>
 </body>
 </html>

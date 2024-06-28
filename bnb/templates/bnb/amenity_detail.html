@@ -1,11 +1,24 @@
-<!-- bnb/templates/bnb/amenity_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ amenity.name }}</title>
+    <title>Détail de la commodité</title>
 </head>
 <body>
-    <h1>{{ amenity.name }}</h1>
-    <a href="{% url 'amenity_list' %}">Retour à la liste des commodités</a>
+    <h1>Détail de la commodité</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
+    <p>Nom: {{ amenity.name }}</p>
+    <a href="{% url 'amenity_update' amenity.pk %}">Modifier</a> | 
+    <a href="{% url 'amenity_delete' amenity.pk %}">Supprimer</a> | 
+    <a href="{% url 'amenity_list' %}">Retour à la liste</a>
 </body>
 </html>

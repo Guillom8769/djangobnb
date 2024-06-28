@@ -1,16 +1,29 @@
-<!-- bnb/templates/bnb/amenity_list.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HBnB - Commodités</title>
+    <title>Liste des commodités</title>
 </head>
 <body>
     <h1>Liste des commodités</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
     <ul>
         {% for amenity in amenities %}
-            <li><a href="{% url 'amenity_detail' amenity.pk %}">{{ amenity.name }}</a></li>
+            <li>
+                <a href="{% url 'amenity_detail' amenity.pk %}">{{ amenity.name }}</a>
+                (<a href="{% url 'amenity_update' amenity.pk %}">Modifier</a> | <a href="{% url 'amenity_delete' amenity.pk %}">Supprimer</a>)
+            </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'home' %}">Retour à l'accueil</a>
+    <a href="{% url 'amenity_create' %}">Créer une nouvelle commodité</a>
 </body>
 </html>

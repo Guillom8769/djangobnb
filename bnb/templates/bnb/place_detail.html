@@ -1,26 +1,33 @@
-<!-- bnb/templates/bnb/place_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ place.name }}</title>
+    <title>Détail du lieu</title>
 </head>
 <body>
     <h1>{{ place.name }}</h1>
-    <p>{{ place.description }}</p>
-    <p>{{ place.address }}</p>
-    <p>Ville: {{ place.city.name }}</p>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
+    <p>Description: {{ place.description }}</p>
+    <p>Adresse: {{ place.address }}</p>
+    <p>Ville: {{ place.city }}</p>
     <p>Latitude: {{ place.latitude }}</p>
     <p>Longitude: {{ place.longitude }}</p>
-    <p>Prix par nuit: {{ place.price_per_night }}</p>
+    <p>Hôte: {{ place.host }}</p>
     <p>Nombre de chambres: {{ place.number_of_rooms }}</p>
     <p>Nombre de salles de bain: {{ place.number_of_bathrooms }}</p>
-    <p>Nombre de personnes max: {{ place.max_guests }}</p>
-    <h2>Amenities:</h2>
-    <ul>
-        {% for amenity in place.amenities.all %}
-            <li>{{ amenity.name }}</li>
-        {% endfor %}
-    </ul>
-    <a href="{% url 'place_list' %}">Retour à la liste des lieux</a>
+    <p>Prix par nuit: {{ place.price_per_night }}</p>
+    <p>Nombre maximum de personnes: {{ place.max_guests }}</p>
+    <a href="{% url 'place_update' place.pk %}">Modifier</a> | 
+    <a href="{% url 'place_delete' place.pk %}">Supprimer</a> | 
+    <a href="{% url 'place_list' %}">Retour à la liste</a>
 </body>
 </html>

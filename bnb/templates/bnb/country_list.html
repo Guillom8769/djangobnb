@@ -1,16 +1,29 @@
-<!-- bnb/templates/bnb/country_list.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HBnB - Pays</title>
+    <title>Liste des pays</title>
 </head>
 <body>
     <h1>Liste des pays</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
     <ul>
         {% for country in countries %}
-            <li><a href="{% url 'country_detail' country.pk %}">{{ country.name }}</a></li>
+            <li>
+                <a href="{% url 'country_detail' country.pk %}">{{ country.name }}</a>
+                (<a href="{% url 'country_update' country.pk %}">Modifier</a> | <a href="{% url 'country_delete' country.pk %}">Supprimer</a>)
+            </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'home' %}">Retour à l'accueil</a>
+    <a href="{% url 'country_create' %}">Créer un nouveau pays</a>
 </body>
 </html>

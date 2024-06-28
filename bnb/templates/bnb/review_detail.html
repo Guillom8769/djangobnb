@@ -1,13 +1,27 @@
-<!-- bnb/templates/bnb/review_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Avis de {{ review.user.username }} sur {{ review.place.name }}</title>
+    <title>Détail de l'avis</title>
 </head>
 <body>
-    <h1>Avis de {{ review.user.username }} sur {{ review.place.name }}</h1>
-    <p>Note: {{ review.rating }}</p>
+    <h1>Détail de l'avis</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
+    <p>Auteur: {{ review.user }}</p>
+    <p>Lieu: {{ review.place }}</p>
+    <p>Évaluation: {{ review.rating }}</p>
     <p>Commentaire: {{ review.comment }}</p>
-    <a href="{% url 'review_list' %}">Retour à la liste des avis</a>
+    <a href="{% url 'review_update' review.pk %}">Modifier</a> | 
+    <a href="{% url 'review_delete' review.pk %}">Supprimer</a> | 
+    <a href="{% url 'review_list' %}">Retour à la liste</a>
 </body>
 </html>

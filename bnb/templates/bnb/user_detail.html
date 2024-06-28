@@ -1,14 +1,26 @@
-<!-- bnb/templates/bnb/user_detail.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ user.username }}</title>
+    <title>Détail de l'utilisateur</title>
 </head>
 <body>
     <h1>{{ user.username }}</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
     <p>Email: {{ user.email }}</p>
     <p>Prénom: {{ user.first_name }}</p>
     <p>Nom: {{ user.last_name }}</p>
-    <a href="{% url 'user_list' %}">Retour à la liste des utilisateurs</a>
+    <a href="{% url 'user_update' user.pk %}">Modifier</a> | 
+    <a href="{% url 'user_delete' user.pk %}">Supprimer</a> | 
+    <a href="{% url 'user_list' %}">Retour à la liste</a>
 </body>
 </html>

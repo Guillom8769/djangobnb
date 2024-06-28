@@ -1,1 +1,26 @@
-country_confirm_delete.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmer la suppression</title>
+</head>
+<body>
+    <h1>Confirmer la suppression</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
+    <p>Êtes-vous sûr de vouloir supprimer ce pays ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Supprimer</button>
+    </form>
+    <a href="{% url 'country_list' %}">Annuler</a>
+</body>
+</html>

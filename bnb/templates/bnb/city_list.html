@@ -1,16 +1,29 @@
-<!-- bnb/templates/bnb/city_list.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>HBnB - Villes</title>
+    <title>Liste des villes</title>
 </head>
 <body>
     <h1>Liste des villes</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Accueil</a></li>
+            <li><a href="{% url 'user_list' %}">Utilisateurs</a></li>
+            <li><a href="{% url 'place_list' %}">Lieux</a></li>
+            <li><a href="{% url 'review_list' %}">Avis</a></li>
+            <li><a href="{% url 'amenity_list' %}">Commodités</a></li>
+            <li><a href="{% url 'country_list' %}">Pays</a></li>
+            <li><a href="{% url 'city_list' %}">Villes</a></li>
+        </ul>
+    </nav>
     <ul>
         {% for city in cities %}
-            <li><a href="{% url 'city_detail' city.pk %}">{{ city.name }}</a></li>
+            <li>
+                <a href="{% url 'city_detail' city.pk %}">{{ city.name }}</a>
+                (<a href="{% url 'city_update' city.pk %}">Modifier</a> | <a href="{% url 'city_delete' city.pk %}">Supprimer</a>)
+            </li>
         {% endfor %}
     </ul>
-    <a href="{% url 'home' %}">Retour à l'accueil</a>
+    <a href="{% url 'city_create' %}">Créer une nouvelle ville</a>
 </body>
 </html>

@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bnb',
+    'rest_framework',
+    'drf_yasg',
 ]
 
 AUTH_USER_MODEL = 'bnb.User'  # Ajouter cette ligne pour utiliser le modèle utilisateur personnalisé

@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import User, Place, Review, Amenity, Country, City
 from .forms import UserForm, PlaceForm, ReviewForm, AmenityForm, CountryForm, CityForm
+from rest_framework import viewsets
+from .serializers import UserSerializer, PlaceSerializer, ReviewSerializer, AmenitySerializer, CountrySerializer, CitySerializer
 
 def home(request):
     return render(request, 'bnb/home.html')
@@ -271,3 +273,26 @@ def city_delete(request, pk):
         city.delete()
         return redirect('city_list')
     return render(request, 'bnb/city_confirm_delete.html', {'city': city})
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class PlaceViewSet(viewsets.ModelViewSet):
+    queryset = Place.objects.all()
+    serializer_class = PlaceSerializer
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+class AmenityViewSet(viewsets.ModelViewSet):
+    queryset = Amenity.objects.all()
+    serializer_class = AmenitySerializer
+
+class CountryViewSet(viewsets.ModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+
+class CityViewSet(viewsets.ModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer

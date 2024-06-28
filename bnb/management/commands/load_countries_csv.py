@@ -7,11 +7,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         with open('countries.csv', mode='r') as file:
-            reader = csv.reader(file)
-            next(reader)  # Skip the header row if your CSV has one
+            reader = csv.DictReader(file)
             for row in reader:
-                country_name = row[0]
-                country_code = row[1]  # Assuming your CSV has a second column for the code
+                country_name = row['name']
+                country_code = row['alpha-2']  # Updated to match the CSV header
                 country, created = Country.objects.get_or_create(name=country_name, code=country_code)
                 if created:
                     self.stdout.write(self.style.SUCCESS(f"Country '{country.name}' created."))

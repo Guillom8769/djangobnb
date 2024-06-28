@@ -11,6 +11,12 @@ class PlaceForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = ['name', 'description', 'address', 'city', 'latitude', 'longitude', 'host', 'number_of_rooms', 'number_of_bathrooms', 'price_per_night', 'max_guests', 'amenities']
+        widgets = {
+            'city': forms.Select()
+        }
+
+        country = forms.ModelChoiceField(queryset=Country.objects.all(), to_field_name="name")
+
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -31,3 +37,6 @@ class CityForm(forms.ModelForm):
     class Meta:
         model = City
         fields = ['name', 'country']
+        widgets = {
+            'country': forms.Select()
+        }

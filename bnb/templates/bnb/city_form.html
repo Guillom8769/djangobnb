@@ -18,9 +18,21 @@
     </nav>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div>
+            <label for="id_name">Nom:</label>
+            {{ form.name }}
+        </div>
+        <div>
+            <label for="id_country">Pays:</label>
+            <select name="country" id="id_country">
+                {% for country in form.fields.country.queryset %}
+                    <option value="{{ country.id }}" {% if country.id == form.initial.country %}selected{% endif %}>{{ country.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
         <button type="submit">{% if form.instance.pk %}Modifier{% else %}Créer{% endif %}</button>
     </form>
     <a href="{% url 'city_list' %}">Retour à la liste des villes</a>
 </body>
 </html>
+

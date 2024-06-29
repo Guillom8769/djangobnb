@@ -1,3 +1,4 @@
+# docker-compose.yml
 version: '3.8'
 
 services:
@@ -8,6 +9,8 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
     depends_on:
       - db
 
